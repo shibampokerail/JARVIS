@@ -21,7 +21,7 @@ To use JARVIS, ensure the following:
 Install all required packages listed in `requirements.txt`. If unavailable, install manually:
 
 ```bash
-pip install flask requests pygame python-dotenv selenium beautifulsoup4 speechrecognition pyautogui keyboard
+pip install -r requirements.txt
 ```
 
 #### 4. API Keys and Credentials
@@ -68,9 +68,10 @@ Use `ChromeDriverManager.py` to update and ensure compatibility with installed C
    ```
 
 4. **Configure Environment**:
-   Copy `env_template` to `.env` and populate with your API keys.
+   Create a `.env` file
+   Copy `env_template` to your `.env` and populate with your API keys.
 
-5. **Run the Application**:
+6. **Run the Application**:
 
    ```bash
    python main.py
