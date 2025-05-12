@@ -18,7 +18,7 @@ def recall_info(query):
 
         result = {"status": "error", "message": "No matching information found."}
 
-        contacts_file = "contacts.json"
+        contacts_file = "../contacts.json"
         if os.path.exists(contacts_file) and (is_phone_query or not is_email_query):
             with open(contacts_file, "r", encoding="utf-8") as f:
                 contacts = json.load(f)
@@ -31,7 +31,7 @@ def recall_info(query):
                         "value": contact["phone_number"]
                     }
 
-        knowledgebase_file = "knowledgebase.txt"
+        knowledgebase_file = "../knowledgebase.txt"
         if os.path.exists(knowledgebase_file) and (is_email_query or not is_phone_query):
             with open(knowledgebase_file, "r", encoding="utf-8") as f:
                 lines = f.readlines()

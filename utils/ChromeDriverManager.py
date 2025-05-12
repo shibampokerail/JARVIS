@@ -82,7 +82,7 @@ def init_chromedriver():
         chrome_version = get_installed_chrome_version()
         print(f"Detected local Chrome version: {chrome_version}")
 
-        target_dir = "drive"
+        target_dir = "../drive"
         if check_chromedriver_version(target_dir):
             print("ChromeDriver is up-to-date. No download needed.")
         else:

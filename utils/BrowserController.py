@@ -17,7 +17,7 @@ from urllib.parse import urljoin
 import os
 
 def setup_browser_with_profile(headless=False):
-    download_dir = os.path.join(os.getcwd(), "downloads")
+    download_dir = os.path.join(os.getcwd(), "../downloads")
     if not os.path.exists(download_dir):
         os.makedirs(download_dir)
 
@@ -29,7 +29,7 @@ def setup_browser_with_profile(headless=False):
         options.add_argument("--headless")
     options.add_argument("--incognito")
 
-    service = Service("drive/chromedriver-win64/chromedriver.exe")
+    service = Service("../drive/chromedriver-win64/chromedriver.exe")
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})

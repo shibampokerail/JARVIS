@@ -5,29 +5,26 @@ from datetime import datetime
 import PyPDF2
 from google import genai
 from google.genai import types
-from BrowserController import (
-    setup_browser_with_profile, search, extract_contact_info,
-    collect_search_links, summarize_page, fill_form, click_element_by_text, scroll_up, scroll_down, human_type, click_search_result_link, login_truman, click_youtube_video, go_back, go_forward, navigate_to_url, close_tab
+from utils.BrowserController import (
+    setup_browser_with_profile, search, collect_search_links, summarize_page, click_element_by_text,
+    click_search_result_link, login_truman, click_youtube_video, go_back, navigate_to_url, close_tab
 )
 import keyboard
 import random
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import Chrome
 from selenium.webdriver.support.ui import Select
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
-from GeminiAssignments import process_assignment
+from agents.GeminiAssignments import process_assignment
 import time
 import urllib
-import requests
 from jarvis_config import speak, function_declarations, remember_info, recall_info
-from SpotifyAI import process_spotify_command
-from Email import send_email
+from ai_tools.SpotifyAI import process_spotify_command
+from ai_tools.Email import send_email
 import speech_recognition as sr
-from BlandCall import call
+from agents.BlandCall import call
 load_dotenv()
 import logging
 
@@ -475,7 +472,7 @@ def do_homework(subject: str) -> dict:
 
         soup = BeautifulSoup(instructions, 'html.parser')
         links = soup.find_all('a', href=True)
-        download_dir = os.path.join(os.getcwd(), "downloads")
+        download_dir = os.path.join(os.getcwd(), "../downloads")
         os.makedirs(download_dir, exist_ok=True)
         downloaded_files = []
 
@@ -680,7 +677,7 @@ def do_homework(subject: str) -> dict:
             gemini_prompt += "Downloaded Files:\n" + "\n".join(downloaded_files) + "\n\n"
 
         speak("\nAlright Sir, I am working on your assignment as we speak....")
-        gemini_response = process_assignment("downloads", "completed_assignments", gemini_prompt)
+        gemini_response = process_assignment("../downloads", "completed_assignments", gemini_prompt)
         print("Gemini Response:")
         is_completed_voice = False
         speak("\nI have completed the assignment sir. You can view it in the completed assignments folder.")
@@ -689,7 +686,7 @@ def do_homework(subject: str) -> dict:
 
         if not downloaded_files:
             print("No downloadable files found. Generating PDF from instructions.")
-            output_dir = os.path.join(os.getcwd(), "completed_assignments", "generated_files")
+            output_dir = os.path.join(os.getcwd(), "../completed_assignments", "generated_files")
             os.makedirs(output_dir, exist_ok=True)
             pdf_path = os.path.join(output_dir, f"{selected_assignment['title']}_submission.pdf")
 

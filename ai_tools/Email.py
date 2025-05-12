@@ -1,19 +1,13 @@
-import smtplib
-from email.message import EmailMessage
-
 # Sender email credentials
  # Use an App Password if using Gmail with 2FA
 import time
-import smtplib
-from email.message import EmailMessage
-from twilio.rest import Client
 import os
 from dotenv import load_dotenv
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import re
-from jarvis_config import recall_info
+from bot.jarvis_config import recall_info
 load_dotenv()
 
 

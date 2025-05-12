@@ -81,7 +81,7 @@ def speak(text):
 
 import logging
 
-logging.basicConfig(filename="knowledgebase.log", level=logging.INFO)
+logging.basicConfig(filename="../knowledgebase.log", level=logging.INFO)
 
 
 def remember_info(name=None, number=None, info=None):
@@ -112,7 +112,7 @@ def remember_info(name=None, number=None, info=None):
                     "message": f"Phone number must be 10 digits: {number}"
                 }
 
-            contacts_file = "contacts.json"
+            contacts_file = "../contacts.json"
             if os.path.exists(contacts_file):
                 with open(contacts_file, "r", encoding="utf-8") as f:
                     contacts = json.load(f)
@@ -141,7 +141,7 @@ def remember_info(name=None, number=None, info=None):
             }
 
         if info:
-            knowledgebase_file = "knowledgebase.txt"
+            knowledgebase_file = "../knowledgebase.txt"
             if not os.path.exists(knowledgebase_file):
                 with open(knowledgebase_file, "w", encoding="utf-8") as f:
                     f.write("# Knowledge Base\n")
@@ -184,7 +184,7 @@ def recall_info(query):
         dict: A dictionary with status, message, and value (if found).
     """
     try:
-        knowledgebase_file = "knowledgebase.txt"
+        knowledgebase_file = "../knowledgebase.txt"
         if not os.path.exists(knowledgebase_file):
             logging.error("Knowledge base file does not exist")
             return {

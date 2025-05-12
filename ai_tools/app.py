@@ -1,9 +1,6 @@
 import os
-from flask import Flask, request, Response, jsonify
 import requests
 from dotenv import load_dotenv
-from flask_cors import CORS
-from jarvis import main
 import pygame
 import sys
 import time
